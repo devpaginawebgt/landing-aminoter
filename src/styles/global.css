@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/* ── Fuentes locales (Lato) ─────────────────────────────────── */
+@font-face {
+  font-family: "Lato";
+  src: url("/src/assets/Lato/Lato-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("/src/assets/Lato/Lato-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("/src/assets/Lato/Lato-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("/src/assets/Lato/Lato-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Theme (Tailwind v4) ────────────────────────────────────── */
+@theme {
+  /* Rojo de marca */
+  --color-brand-red: #d22510;
+  --color-brand-red-dark: #a81c0b;
+  --color-brand-red-light: #e5432e;
+
+  /* Azul de marca (violeta profundo) */
+  --color-brand-blue: #3c2f87;
+  --color-brand-blue-dark: #2a2062;
+  --color-brand-blue-light: #5245a8;
+  --color-brand-blue-deep: #1a1442;
+
+  /* Neutros */
+  --color-cream: #f5f1ea;
+
+  /* Fuentes: Inter para display, Lato para body */
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-sans: "Lato", system-ui, sans-serif;
+}
+
+/* ── Lenis ───────────────────────────────────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* ── Base ────────────────────────────────────────────────────── */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-blue-deep);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ── Helpers de animación ────────────────────────────────────── */
+.split-line {
+  overflow: hidden;
+  display: inline-block;
+}
+.split-line > span {
+  display: inline-block;
+  transform: translateY(110%);
+  will-change: transform;
+}

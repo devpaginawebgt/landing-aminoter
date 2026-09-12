@@ -1,0 +1,66 @@
+---
+---
+
+<section
+	id="nosotros"
+	class="relative w-full py-24 lg:py-32 px-6 lg:px-10 bg-cream overflow-hidden"
+>
+	<div
+		class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center"
+	>
+		<!-- COLUMNA IZQUIERDA: hombre -->
+		<div class="relative" data-reveal="fade-right">
+			<div
+				class="relative rounded-3xl overflow-hidden aspect-[4/5] bg-brand-blue-deep/10"
+			>
+				<img
+					src="/images/hombre.png"
+					alt="Persona usando Aminoter"
+					class="w-full h-full object-cover"
+				/>
+			</div>
+		</div>
+
+		<!-- COLUMNA DERECHA: producto + texto -->
+		<div class="flex flex-col gap-8">
+			<!-- Producto arriba -->
+			<div data-reveal="fade-up">
+				<img
+					src="/images/producto.png"
+					alt="Producto Aminoter"
+					class="w-40 lg:w-60 h-auto object-contain drop-shadow-xl rounded-full transition-transform duration-500 ease-out hover:-translate-y-3 cursor-pointer"
+				/>
+			</div>
+
+			<div class="flex flex-col gap-6" data-reveal="fade-left">
+				<h2
+					class="font-display font-black leading-[0.95] tracking-tight text-brand-blue-deep"
+					style="font-size: clamp(2rem, 4.5vw, 3.75rem);"
+				>
+					Cuidado real,<br />
+					hecho con propósito.
+				</h2>
+
+				<p
+					class="text-brand-blue-deep/70 text-base lg:text-lg leading-relaxed max-w-xl"
+				>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+					minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+					aliquip.
+				</p>
+
+				<a
+					href="#"
+					class="mt-4 group inline-flex items-center gap-3 self-start px-8 py-4 rounded-full border-2 border-brand-blue-deep hover:bg-brand-blue-deep hover:text-white text-brand-blue-deep text-xs font-bold tracking-widest uppercase transition-colors"
+				>
+					Conocer más
+					<span
+						aria-hidden="true"
+						class="transition-transform group-hover:translate-x-1"
+					>→</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
