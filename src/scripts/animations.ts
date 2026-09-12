@@ -53,6 +53,73 @@ function animateReveals() {
 	});
 }
 
+function animateProductScroll() {
+	const section = document.querySelector<HTMLElement>("[data-products]");
+	if (!section) return;
+
+	const pin = section.querySelector<HTMLElement>("[data-products-pin]");
+	const texts = section.querySelectorAll<HTMLElement>("[data-product-text]");
+	const images = section.querySelectorAll<HTMLElement>("[data-product-image]");
+
+	if (!pin || texts.length < 2 || images.length !== texts.length) return;
+
+	const mm = gsap.matchMedia();
+
+	mm.add("(min-width: 1024px)", () => {
+		gsap.set(texts, { yPercent: (i) => (i === 0 ? 0 : 100), y: 0 });
+		gsap.set(images, { yPercent: (i) => (i === 0 ? 0 : -100), y: 0 });
+
+		const dur = 1;
+		const hold = 0.3;
+		const step = dur + hold;
+
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: section,
+				pin: pin,
+				start: "top top",
+				end: "bottom bottom",
+				scrub: 0.5,
+			},
+		});
+
+		// Objeto dummy para hold real (garantiza que el timeline consuma duración)
+		const dummy = { v: 0 };
+
+		// Hold inicial
+		tl.to(dummy, { v: 1, duration: hold });
+
+		// Transiciones + hold del entrante
+		for (let i = 0; i < texts.length - 1; i++) {
+			const start = hold + i * step;
+
+			tl.to(
+				texts[i],
+				{ yPercent: -100, duration: dur, ease: "power2.inOut" },
+				start,
+			)
+				.to(
+					images[i],
+					{ yPercent: 100, duration: dur, ease: "power2.inOut" },
+					start,
+				)
+				.to(
+					texts[i + 1],
+					{ yPercent: 0, duration: dur, ease: "power2.inOut" },
+					start,
+				)
+				.to(
+					images[i + 1],
+					{ yPercent: 0, duration: dur, ease: "power2.inOut" },
+					start,
+				);
+		}
+
+		// Hold final (Max visible al terminar)
+		tl.to(dummy, { v: 2, duration: hold });
+	});
+}
+
 function animateMarquees() {
 	const marquees = document.querySelectorAll<HTMLElement>("[data-marquee]");
 
@@ -78,6 +145,7 @@ export function initAnimations() {
 	const run = () => {
 		animateHeroTitle();
 		animateReveals();
+		animateProductScroll();
 		animateMarquees();
 		ScrollTrigger.refresh();
 	};
