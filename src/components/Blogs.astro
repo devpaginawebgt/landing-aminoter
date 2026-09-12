@@ -1,0 +1,124 @@
+---
+const blogs = [
+	{
+		tag: "Cuidado",
+		date: "12 Sep 2026",
+		title: "Lorem ipsum dolor sit amet consectetur",
+		desc: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		img: "/images/blog-1.jpeg",
+	},
+	{
+		tag: "Bienestar",
+		date: "05 Sep 2026",
+		title: "Ut enim ad minim veniam quis nostrud",
+		desc: "Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+		img: "/images/blog-2.jpg",
+	},
+	{
+		tag: "Nutrición",
+		date: "28 Ago 2026",
+		title: "Duis aute irure dolor in reprehenderit",
+		desc: "In voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+		img: "/images/blog-3.jpeg",
+	},
+	{
+		tag: "Rutina",
+		date: "20 Ago 2026",
+		title: "Excepteur sint occaecat cupidatat non",
+		desc: "Proident sunt in culpa qui officia deserunt mollit anim id est laborum.",
+		img: "/images/blog-4.webp",
+	},
+];
+---
+
+<section
+	id="blogs"
+	class="relative w-full py-24 lg:py-32 px-6 lg:px-10 bg-cream overflow-hidden"
+>
+	<div class="max-w-350 mx-auto">
+		<div
+			class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 lg:mb-20"
+			data-reveal="fade-up"
+		>
+			<div class="flex flex-col gap-4 max-w-xl">
+				<p
+					class="text-xs font-bold tracking-[0.3em] uppercase text-brand-red"
+				>
+					Blog & Novedades
+				</p>
+				<h2
+					class="font-display font-black leading-[0.95] tracking-tight text-brand-blue-deep"
+					style="font-size: clamp(2rem, 4.5vw, 3.75rem);"
+				>
+					Últimas historias
+				</h2>
+			</div>
+			<a
+				href="#"
+				class="group inline-flex items-center gap-3 self-start px-8 py-4 rounded-full border-2 border-brand-blue-deep hover:bg-brand-blue-deep hover:text-white text-brand-blue-deep text-xs font-bold tracking-widest uppercase transition-colors"
+			>
+				Ver todo
+				<span
+					aria-hidden="true"
+					class="transition-transform group-hover:translate-x-1">→</span
+				>
+			</a>
+		</div>
+
+		<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+			{
+				blogs.map((b, i) => {
+					const spans = [
+						"lg:col-span-8",
+						"lg:col-span-4",
+						"lg:col-span-4",
+						"lg:col-span-8",
+					];
+					const wide = i === 0 || i === 3;
+					return (
+						<a
+							href="#"
+							data-reveal="fade-up"
+							class:list={[
+								"group relative block overflow-hidden rounded-2xl bg-brand-blue-deep/10",
+								spans[i],
+								wide ? "aspect-video" : "aspect-4/5",
+							]}
+						>
+							<img
+								src={b.img}
+								alt={b.title}
+								class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+							/>
+							<div class="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+							<div class="absolute inset-0 flex flex-col justify-end p-6 lg:p-10 gap-3 lg:gap-4">
+								<div class="flex items-center gap-3 text-[0.7rem] font-bold tracking-[0.25em] uppercase text-white/80">
+									<span>{b.tag}</span>
+									<span class="text-white/40">•</span>
+									<span>{b.date}</span>
+								</div>
+								<h3
+									class:list={[
+										"font-display font-black leading-tight text-white max-w-2xl",
+										wide
+											? "text-3xl lg:text-4xl xl:text-5xl"
+											: "text-2xl lg:text-3xl",
+									]}
+								>
+									{b.title}
+								</h3>
+								<span class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-white">
+									Leer más
+									<span
+										aria-hidden="true"
+										class="transition-transform group-hover:translate-x-1"
+									>→</span>
+								</span>
+							</div>
+						</a>
+					);
+				})
+			}
+		</div>
+	</div>
+</section>
