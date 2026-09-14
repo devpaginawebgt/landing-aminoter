@@ -1,0 +1,66 @@
+---
+const presentaciones = ["Aminoter", "Aminoter Complex", "Aminoter MAX"];
+---
+
+<section
+	id="marca"
+	class="relative w-full bg-cream overflow-hidden"
+>
+	<div class="px-6 py-10 lg:py-16">
+		<h2
+			data-reveal="fade-up"
+			class="font-display font-black leading-none tracking-tight text-brand-red text-center"
+			style="font-size: clamp(4.5rem, 20vw, 20rem);"
+		>
+			Aminoter
+		</h2>
+	</div>
+
+	<div class="relative w-full bg-brand-red overflow-hidden py-6 lg:py-8">
+		<div class="marquee-track flex w-max whitespace-nowrap">
+			{
+				[0, 1, 2].map(() => (
+					<ul
+						aria-hidden={false}
+						class="flex items-center shrink-0"
+					>
+						{presentaciones.map((p) => (
+							<li class="flex items-center">
+								<span class="px-10 lg:px-16 text-sm lg:text-base font-bold tracking-[0.3em] uppercase text-cream">
+									{p}
+								</span>
+								<span
+									aria-hidden="true"
+									class="text-cream/60 text-base lg:text-lg"
+								>
+									✧
+								</span>
+							</li>
+						))}
+					</ul>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	@keyframes marquee {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(calc(-100% / 3));
+		}
+	}
+
+	.marquee-track {
+		animation: marquee 30s linear infinite;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.marquee-track {
+			animation: none;
+		}
+	}
+</style>

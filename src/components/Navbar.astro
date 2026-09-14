@@ -39,12 +39,26 @@ const links = [
 		}
 	</nav>
 
-	<a
-		href="#contacto"
-		class="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-brand-red hover:bg-brand-red-dark text-white text-xs font-bold tracking-widest uppercase transition-colors"
-	>
-		Comprar
-	</a>
+	<div class="flex items-center gap-3 md:gap-4">
+		<a
+			href="#contacto"
+			class="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-brand-red hover:bg-brand-red-dark text-white text-xs font-bold tracking-widest uppercase transition-colors"
+		>
+			Comprar
+		</a>
+
+		<button
+			type="button"
+			id="site-header-menu"
+			aria-label="Abrir menú"
+			aria-expanded="false"
+			class="group inline-flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full text-white transition-colors hover:bg-white/10"
+		>
+			<span class="block h-0.5 w-5 bg-current transition-transform duration-300 ease-out"></span>
+			<span class="block h-0.5 w-5 bg-current transition-opacity duration-300 ease-out"></span>
+			<span class="block h-0.5 w-5 bg-current transition-transform duration-300 ease-out"></span>
+		</button>
+	</div>
 </header>
 
 <script>
