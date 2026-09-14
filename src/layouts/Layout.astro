@@ -10,6 +10,8 @@ const {
 	title = "Aminoter — Cuidado real para tu cabello",
 	description = "Shampoo formulado con activos que fortalecen, hidratan y revitalizan tu cabello desde la raíz.",
 } = Astro.props;
+
+const noindex = import.meta.env.PUBLIC_NOINDEX === "true";
 ---
 
 <!doctype html>
@@ -20,6 +22,7 @@ const {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		{noindex && <meta name="robots" content="noindex, nofollow" />}
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
