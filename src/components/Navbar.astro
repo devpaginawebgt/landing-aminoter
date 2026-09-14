@@ -10,8 +10,14 @@ const links = [
 <header
 	id="site-header"
 	data-reveal="fade-down"
-	class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 transition-[background-color,backdrop-filter,box-shadow,padding] duration-300 ease-out"
+	class="fixed top-0 left-0 right-0 z-50 isolate flex items-center justify-between px-6 md:px-10 transition-[box-shadow,padding] duration-300 ease-out"
 >
+	<span
+		id="site-header-bg"
+		aria-hidden="true"
+		class="pointer-events-none absolute inset-0 -z-10 origin-center scale-x-0 bg-brand-blue-deep transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)]"
+	></span>
+
 	<a href="/" class="flex items-center">
 		<img
 			src="/images/AMINOTER-BLANCO.png"
@@ -43,12 +49,9 @@ const links = [
 
 <script>
 	const header = document.getElementById("site-header");
-	if (header) {
-		const scrolledClasses = [
-			"bg-(--color-brand-blue-deep)",
-			"shadow-sm",
-			"py-4",
-		];
+	const headerBg = document.getElementById("site-header-bg");
+	if (header && headerBg) {
+		const scrolledClasses = ["shadow-sm", "py-4"];
 		const topClasses = ["py-5"];
 
 		const update = () => {
@@ -56,6 +59,8 @@ const links = [
 			header.classList.toggle("is-scrolled", isScrolled);
 			for (const c of scrolledClasses) header.classList.toggle(c, isScrolled);
 			for (const c of topClasses) header.classList.toggle(c, !isScrolled);
+			headerBg.classList.toggle("scale-x-0", !isScrolled);
+			headerBg.classList.toggle("scale-x-100", isScrolled);
 		};
 
 		update();
